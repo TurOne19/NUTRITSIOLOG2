@@ -248,7 +248,7 @@ export default function Home() {
   const [adminReviews, setAdminReviews] = useState([])
   const [adminLoading, setAdminLoading] = useState(false)
 
-  const ADMIN_SECRET = process.env.NEXT_PUBLIC_ADMIN_SECRET || 'julia2025secret'
+  const ADMIN_SECRET = process.env.NEXT_PUBLIC_ADMIN_SECRET || 'julia2025'
 
   // ─── INIT ───
   useEffect(() => {
@@ -373,14 +373,14 @@ export default function Home() {
     setLbOpen(true)
   }
 
-  function adminLogin() {
-    if (adminPass === 'julia2025') {
-      setAdminLoggedIn(true)
-      fetchAdminReviews()
-    } else {
-      alert('Неверный пароль')
-    }
+function adminLogin() {
+  if (adminPass === ADMIN_SECRET) {
+    setAdminLoggedIn(true)
+    fetchAdminReviews()
+  } else {
+    alert('Неверный пароль')
   }
+}
 
   const galleryPhotos = Array.from({ length: GALLERY_COUNT }, (_, i) => photos[`gallery_${i}`] || STOCK_PHOTOS[i])
   const programs = [t.pk1_h, t.pk2_h, t.pk3_h]
