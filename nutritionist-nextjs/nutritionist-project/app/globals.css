@@ -24,7 +24,7 @@ body{font-family:var(--ff-sans);background:var(--c1);color:var(--text);line-heig
 /* ─── INTRO OVERLAY ─── */
 #intro-overlay{
   position:fixed;inset:0;z-index:9999;
-  background:var(--c1);
+  background:#fff;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:20px;
   transition:opacity 1s ease, visibility 1s ease;
@@ -38,7 +38,7 @@ body{font-family:var(--ff-sans);background:var(--c1);color:var(--text);line-heig
 }
 .intro-tagline{
   font-family:var(--ff-sans);font-size:clamp(11px,1.8vw,14px);
-  color:var(--muted);letter-spacing:.25em;text-transform:uppercase;
+  color:var(--c6);letter-spacing:.25em;text-transform:uppercase;
   font-weight:300;
   animation:fadeUp .9s .25s ease both;
 }
@@ -58,14 +58,14 @@ body::after{
 /* ─── LANG BAR ─── */
 .lang-bar{
   position:fixed;top:0;left:0;right:0;z-index:200;
-  background:transparent;
+  background:var(--c7);
   display:flex;justify-content:flex-end;align-items:center;
   padding:6px 24px;gap:4px;
 }
 .lang-btn{
   background:none;border:none;cursor:pointer;
   font-family:var(--ff-sans);font-size:11px;letter-spacing:.14em;
-  color:var(--muted);padding:4px 10px;border-radius:20px;
+  color:#fff;padding:4px 10px;border-radius:20px;
   font-weight:500;text-transform:uppercase;
   transition:background .2s,color .2s;
 }
@@ -73,7 +73,7 @@ body::after{
 
 /* ─── NAV ─── */
 nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
+  position:fixed;top:32px;left:0;right:0;z-index:100;
   background:rgba(247,240,232,.93);
   backdrop-filter:blur(18px);
   border-bottom:1px solid rgba(184,149,106,.2);
@@ -111,7 +111,7 @@ nav{
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
 .burger span{display:block;width:22px;height:1.5px;background:var(--c6);transition:.3s}
 .mobile-menu{
-  display:none;position:fixed;top:64px;left:0;right:0;
+  display:none;position:fixed;top:96px;left:0;right:0;
   background:var(--c1);border-bottom:1px solid var(--c3);
   padding:24px;z-index:99;
   flex-direction:column;gap:16px;
