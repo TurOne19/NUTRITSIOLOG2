@@ -337,7 +337,7 @@ export default function Home() {
       body: fd
     })
     const data = await res.json()
-    if (data.url) setPhotos(prev => ({ ...prev, [key]: data.url }))
+    if (data.url) setPhotos(prev => ({ ...prev, [key]: data.url + '?t=' + Date.now() }))
   }
 
   async function deletePhoto(key) {
