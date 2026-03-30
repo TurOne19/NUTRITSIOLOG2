@@ -54,21 +54,7 @@ body::after{
   opacity:.03;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-@media(max-width:768px){
-  #intro-overlay{
-    background:#fff;
-    gap:16px;
-  }
-  .intro-logo{
-    font-size:clamp(28px,8vw,42px);
-  }
-  .intro-tagline{
-    font-size:clamp(10px,3vw,13px);
-    letter-spacing:.18em;
-    padding:0 24px;
-    text-align:center;
-  }
-}
+
 /* ─── LANG BAR ─── */
 .lang-bar{
   position:fixed;top:0;left:0;right:0;z-index:200;
