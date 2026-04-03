@@ -395,7 +395,7 @@ export default function Home() {
     <>
       {/* INTRO */}
       <div id="intro-overlay" className={introClass}>
-        <img src="/logo.png" alt="Julia Petrov Nutritionist" style={{width:260,marginBottom:28}} />
+        <img src="https://xcyyteuhordlrxniqvqu.supabase.co/storage/v1/object/public/photos/5917962693757308165__1_-removebg-preview.png" alt="Julia Petrov Nutritionist" style={{width:260,marginBottom:28}} />
         <div className="intro-tagline" style={{color:'#8B6F4E',letterSpacing:3,fontSize:13,fontFamily:"'DM Sans', sans-serif",fontWeight:600}}>Нутрициолог · Персональный подход</div>
         <div className="intro-line" style={{width:60,height:1,background:'#C9A96E',margin:'20px auto 0'}}></div>
       </div>
