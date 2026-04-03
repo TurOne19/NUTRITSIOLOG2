@@ -463,9 +463,10 @@ export default function Home() {
                 {photos.heroFoto
                   ? <img src={photos.heroFoto} alt="Julia"/>
                   : <span style={{fontSize:11,opacity:.5}}>Фото загружается через админку</span>
-                }
+}
               </div>
             </div>
+          </div>
         </div>
       </section>
 
