@@ -641,77 +641,95 @@ export default function Home() {
             <div className="divider"/>
             <p>{t.pack_sub}</p>
           </div>
-          <div className="pack-grid stagger">
+          <div className="pack-grid stagger" style={{alignItems:'stretch'}}>
 
             {/* START */}
-            <div className="pack-card">
-              <div className="pack-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-              <h3>{t.pk1_h}</h3>
-              <p className="pack-desc">{t.pk1_d}</p>
-              <div style={{marginBottom:16}}>
-                <div style={{fontSize:13,fontWeight:600,color:'var(--c7)',marginBottom:8}}>{t.pk1_includes_title}</div>
-                <ul style={{paddingLeft:18,display:'flex',flexDirection:'column',gap:4}}>
-                  {t.pk1_includes.map((item,i)=><li key={i} style={{fontSize:13,color:'var(--muted)'}}>{item}</li>)}
+            <div className="pack-card" style={{display:'flex',flexDirection:'column'}}>
+              <div style={{display:'flex',alignItems:'center',gap:14,marginBottom:16}}>
+                <div className="pack-icon" style={{margin:0,flexShrink:0}}><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+                <h3 style={{margin:0}}>{t.pk1_h}</h3>
+              </div>
+              <p className="pack-desc" style={{marginBottom:20}}>{t.pk1_d}</p>
+              <div style={{marginBottom:14}}>
+                <div style={{fontSize:12,fontWeight:700,color:'var(--accent)',letterSpacing:'.1em',textTransform:'uppercase',marginBottom:10}}>{t.pk1_includes_title}</div>
+                <ul style={{paddingLeft:16,display:'flex',flexDirection:'column',gap:6}}>
+                  {t.pk1_includes.map((item,i)=><li key={i} style={{fontSize:13,color:'var(--muted)',lineHeight:1.6}}>{item}</li>)}
                 </ul>
               </div>
-              <div style={{marginBottom:16}}>
-                <div style={{fontSize:13,fontWeight:600,color:'var(--c7)',marginBottom:8}}>{t.pk1_who_title}</div>
-                <ul style={{paddingLeft:18,display:'flex',flexDirection:'column',gap:4}}>
-                  {t.pk1_who.map((item,i)=><li key={i} style={{fontSize:13,color:'var(--muted)'}}>{item}</li>)}
+              <div style={{marginBottom:14}}>
+                <div style={{fontSize:12,fontWeight:700,color:'var(--accent)',letterSpacing:'.1em',textTransform:'uppercase',marginBottom:10}}>{t.pk1_who_title}</div>
+                <ul style={{paddingLeft:16,display:'flex',flexDirection:'column',gap:6}}>
+                  {t.pk1_who.map((item,i)=><li key={i} style={{fontSize:13,color:'var(--muted)',lineHeight:1.6}}>{item}</li>)}
                 </ul>
               </div>
-              <p style={{fontSize:13,color:'var(--c6)',marginBottom:12}}>{t.pk1_result}</p>
-              <p style={{fontSize:15,fontWeight:600,color:'var(--c7)',marginBottom:20}}>{t.pk1_price}</p>
-              <a href="https://www.instagram.com/julia_petrov_nutritio/" target="_blank" className="pack-btn pack-btn-ghost">{t.pk_write}</a>
+              <div style={{marginTop:'auto',paddingTop:20,borderTop:'1px solid var(--c3)'}}>
+                <p style={{fontSize:13,color:'var(--c6)',marginBottom:14,lineHeight:1.6}}>{t.pk1_result}</p>
+                <p style={{fontSize:22,fontWeight:700,color:'var(--c7)',marginBottom:20,fontFamily:"var(--ff-serif)"}}>{t.pk1_price}</p>
+                <a href="https://www.instagram.com/julia_petrov_nutritio/" target="_blank" className="pack-btn pack-btn-ghost">
+                  {lang==='ru'?'Написать и заказать':lang==='et'?'Kirjuta ja telli':'Write to order'}
+                </a>
+              </div>
             </div>
 
             {/* PRO */}
-            <div className="pack-card feat">
+            <div className="pack-card feat" style={{display:'flex',flexDirection:'column'}}>
               <div className="pack-badge">{t.pk2_badge}</div>
-              <div className="pack-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-              <h3>{t.pk2_h}</h3>
-              <p className="pack-desc">{t.pk2_d}</p>
-              <div style={{marginBottom:16}}>
-                <div style={{fontSize:13,fontWeight:600,color:'var(--c7)',marginBottom:8}}>{t.pk2_includes_title}</div>
-                <ul style={{paddingLeft:18,display:'flex',flexDirection:'column',gap:4}}>
-                  {t.pk2_includes.map((item,i)=><li key={i} style={{fontSize:13,color:'var(--muted)'}}>{item}</li>)}
+              <div style={{display:'flex',alignItems:'center',gap:14,marginBottom:16}}>
+                <div className="pack-icon" style={{margin:0,flexShrink:0}}><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                <h3 style={{margin:0}}>{t.pk2_h}</h3>
+              </div>
+              <p className="pack-desc" style={{marginBottom:20}}>{t.pk2_d}</p>
+              <div style={{marginBottom:14}}>
+                <div style={{fontSize:12,fontWeight:700,color:'var(--accent)',letterSpacing:'.1em',textTransform:'uppercase',marginBottom:10}}>{t.pk2_includes_title}</div>
+                <ul style={{paddingLeft:16,display:'flex',flexDirection:'column',gap:6}}>
+                  {t.pk2_includes.map((item,i)=><li key={i} style={{fontSize:13,color:'var(--muted)',lineHeight:1.6}}>{item}</li>)}
                 </ul>
               </div>
-              <div style={{marginBottom:16}}>
-                <div style={{fontSize:13,fontWeight:600,color:'var(--c7)',marginBottom:8}}>{t.pk2_who_title}</div>
-                <ul style={{paddingLeft:18,display:'flex',flexDirection:'column',gap:4}}>
-                  {t.pk2_who.map((item,i)=><li key={i} style={{fontSize:13,color:'var(--muted)'}}>{item}</li>)}
+              <div style={{marginBottom:14}}>
+                <div style={{fontSize:12,fontWeight:700,color:'var(--accent)',letterSpacing:'.1em',textTransform:'uppercase',marginBottom:10}}>{t.pk2_who_title}</div>
+                <ul style={{paddingLeft:16,display:'flex',flexDirection:'column',gap:6}}>
+                  {t.pk2_who.map((item,i)=><li key={i} style={{fontSize:13,color:'var(--muted)',lineHeight:1.6}}>{item}</li>)}
                 </ul>
               </div>
-              <p style={{fontSize:13,color:'var(--c6)',marginBottom:12}}>{t.pk2_result}</p>
-              <p style={{fontSize:15,fontWeight:600,color:'var(--c7)',marginBottom:20}}>{t.pk2_price}</p>
-              <a href="https://www.instagram.com/julia_petrov_nutritio/" target="_blank" className="pack-btn pack-btn-solid">{t.pk_write}</a>
+              <div style={{marginTop:'auto',paddingTop:20,borderTop:'1px solid var(--c3)'}}>
+                <p style={{fontSize:13,color:'var(--c6)',marginBottom:14,lineHeight:1.6}}>{t.pk2_result}</p>
+                <p style={{fontSize:22,fontWeight:700,color:'var(--c7)',marginBottom:20,fontFamily:"var(--ff-serif)"}}>{t.pk2_price}</p>
+                <a href="https://www.instagram.com/julia_petrov_nutritio/" target="_blank" className="pack-btn pack-btn-solid">
+                  {lang==='ru'?'Написать и заказать':lang==='et'?'Kirjuta ja telli':'Write to order'}
+                </a>
+              </div>
             </div>
 
             {/* INDIVIDUAL */}
-            <div className="pack-card" style={{display:'flex',flexDirection:'column',gap:0}}>
-              <div className="pack-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-              <h3>{t.pk3_h}</h3>
-              <p className="pack-desc">{t.pk3_d}</p>
-              <p style={{fontSize:13,color:'var(--muted)',marginBottom:16,lineHeight:1.7}}>{t.pk3_sub}</p>
-              <p style={{fontSize:13,color:'var(--c6)',marginBottom:20,lineHeight:1.7}}>{t.pk3_cta}</p>
-              <a href="https://www.instagram.com/julia_petrov_nutritio/" target="_blank" className="pack-btn pack-btn-ghost" style={{marginTop:'auto'}}>{t.pk_write}</a>
+            <div className="pack-card" style={{display:'flex',flexDirection:'column'}}>
+              <div style={{display:'flex',alignItems:'center',gap:14,marginBottom:16}}>
+                <div className="pack-icon" style={{margin:0,flexShrink:0}}><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <h3 style={{margin:0}}>{t.pk3_h}</h3>
+              </div>
+              <p className="pack-desc" style={{marginBottom:16}}>{t.pk3_d}</p>
+              <p style={{fontSize:13,color:'var(--muted)',marginBottom:0,lineHeight:1.7}}>{t.pk3_sub}</p>
+              <div style={{marginTop:'auto',paddingTop:20,borderTop:'1px solid var(--c3)'}}>
+                <p style={{fontSize:13,color:'var(--c6)',marginBottom:20,lineHeight:1.7}}>{t.pk3_cta}</p>
+                <a href="https://www.instagram.com/julia_petrov_nutritio/" target="_blank" className="pack-btn pack-btn-ghost">
+                  {lang==='ru'?'Написать и заказать':lang==='et'?'Kirjuta ja telli':'Write to order'}
+                </a>
+              </div>
             </div>
           </div>
 
           {/* NOT FOR WHOM */}
-          <div className="reveal" style={{marginTop:56,background:'var(--white)',borderRadius:'var(--r)',padding:'36px 40px',border:'1.5px solid var(--c3)'}}>
-            <div style={{fontSize:18,fontWeight:600,color:'var(--c7)',marginBottom:16,fontFamily:"var(--ff-sans)"}}>{t.pk_not_for_title}</div>
-            <ul style={{paddingLeft:20,display:'flex',flexDirection:'column',gap:8,marginBottom:20}}>
-              {t.pk_not_for.map((item,i)=><li key={i} style={{fontSize:15,color:'var(--muted)'}}>{item}</li>)}
+          <div className="reveal" style={{marginTop:40,background:'var(--white)',borderRadius:'var(--r)',padding:'32px 40px',border:'1.5px solid var(--c3)'}}>
+            <div style={{fontSize:17,fontWeight:600,color:'var(--c7)',marginBottom:14,fontFamily:"var(--ff-sans)"}}>{t.pk_not_for_title}</div>
+            <ul style={{paddingLeft:20,display:'flex',flexDirection:'column',gap:8,marginBottom:16}}>
+              {t.pk_not_for.map((item,i)=><li key={i} style={{fontSize:14,color:'var(--muted)'}}>{item}</li>)}
             </ul>
-            <p style={{fontSize:14,color:'var(--c6)',fontWeight:500}}>{t.pk_not_for_note}</p>
+            <p style={{fontSize:13,color:'var(--c6)',fontWeight:500}}>{t.pk_not_for_note}</p>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="section">
+      <section id="faq" className="section" style={{paddingTop:64}}>
         <div className="container">
           <div className="faq-layout">
             <div className="faq-intro reveal-left">
