@@ -79,6 +79,8 @@ const T = {
     rf_rating_label:'Оценка', rf_text_label:'Ваш отзыв', rf_result_label:'Ваш результат (кратко)',
     rf_submit:'Отправить отзыв', rf_note:'После проверки будет опубликован',
     rf_success_title:'Спасибо за отзыв!', rf_success_sub:'Появится после проверки.',
+    rf_photo_label:'Фото (до 3 штук, необязательно)', rf_photo_add:'Добавить',
+    rf_name_ph:'Анна, 32 года', rf_text_ph:'Расскажите о своём опыте...', rf_result_ph:'−5 кг, больше энергии...',
     adv_tag:'Почему со мной', adv_h2:'Подход, который работает',
     adv1_h:'Понимание вместо строгих правил', adv1_t:'Вы не просто следуете рекомендациям, а понимаете, как и почему они работают.',
     adv2_h:'Поддержка', adv2_t:'Я рядом на всём пути — в вопросах, сомнениях и ваших достижениях.',
@@ -163,6 +165,8 @@ const T = {
     rf_rating_label:'Hinne', rf_text_label:'Sinu arvustus', rf_result_label:'Sinu tulemus',
     rf_submit:'Saada arvustus', rf_note:'Avaldatakse pärast kontrolli',
     rf_success_title:'Tänan!', rf_success_sub:'Ilmub pärast kontrolli.',
+    rf_photo_label:'Fotod (kuni 3, vabatahtlik)', rf_photo_add:'Lisa',
+    rf_name_ph:'Anna, 32 aastat', rf_text_ph:'Räägi oma kogemusest...', rf_result_ph:'−5 kg, rohkem energiat...',
     adv_tag:'Miks minuga', adv_h2:'Lähenemine, mis töötab',
     adv1_h:'Mõistmine rangete reeglite asemel', adv1_t:'Sa ei järgi lihtsalt soovitusi, vaid mõistad, kuidas ja miks need töötavad.',
     adv2_h:'Tugi', adv2_t:'Olen kõrval kogu teel — küsimustes, kahtlustes ja sinu saavutustes.',
@@ -247,6 +251,8 @@ const T = {
     rf_rating_label:'Rating', rf_text_label:'Your review', rf_result_label:'Your result',
     rf_submit:'Submit review', rf_note:'Will be published after moderation',
     rf_success_title:'Thank you!', rf_success_sub:'Appears after moderation.',
+    rf_photo_label:'Photos (up to 3, optional)', rf_photo_add:'Add',
+    rf_name_ph:'Anna, 32 years old', rf_text_ph:'Tell us about your experience...', rf_result_ph:'−5 kg, more energy...',
     adv_tag:'Why me', adv_h2:'An approach that truly works',
     adv1_h:'Understanding over strict rules', adv1_t:"You don't just follow recommendations — you understand how and why they work.",
     adv2_h:'Support', adv2_t:"I'm here for you throughout — in questions, doubts and your achievements.",
@@ -702,14 +708,16 @@ export default function Home() {
 
             {/* INDIVIDUAL */}
             <div className="pack-card" style={{display:'flex',flexDirection:'column'}}>
-              <div style={{display:'flex',alignItems:'center',gap:14,marginBottom:16}}>
+              <div style={{display:'flex',alignItems:'center',gap:14,marginBottom:20}}>
                 <div className="pack-icon" style={{margin:0,flexShrink:0}}><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
                 <h3 style={{margin:0}}>{t.pk3_h}</h3>
               </div>
-              <p className="pack-desc" style={{marginBottom:16}}>{t.pk3_d}</p>
-              <p style={{fontSize:13,color:'var(--muted)',marginBottom:0,lineHeight:1.7}}>{t.pk3_sub}</p>
+              <p className="pack-desc" style={{marginBottom:20,lineHeight:1.75}}>{t.pk3_d}</p>
+              <div style={{background:'var(--c1)',borderRadius:10,padding:'16px 18px',marginBottom:20,border:'1px solid var(--c3)'}}>
+                <p style={{fontSize:13,color:'var(--muted)',lineHeight:1.75,margin:0}}>{t.pk3_sub}</p>
+              </div>
               <div style={{marginTop:'auto',paddingTop:20,borderTop:'1px solid var(--c3)'}}>
-                <p style={{fontSize:13,color:'var(--c6)',marginBottom:20,lineHeight:1.7}}>{t.pk3_cta}</p>
+                <p style={{fontSize:13,color:'var(--c6)',marginBottom:20,lineHeight:1.75,fontStyle:'italic'}}>{t.pk3_cta}</p>
                 <a href="https://www.instagram.com/julia_petrov_nutritio/" target="_blank" className="pack-btn pack-btn-ghost">
                   {lang==='ru'?'Написать и заказать':lang==='et'?'Kirjuta ja telli':'Write to order'}
                 </a>
@@ -803,7 +811,7 @@ export default function Home() {
             <div className="form-grid">
               <div className="form-field">
                 <label>{t.rf_name_label}</label>
-                <input value={rfName} onChange={e=>setRfName(e.target.value)} placeholder="Анна, 32 года"/>
+                <input value={rfName} onChange={e=>setRfName(e.target.value)} placeholder={t.rf_name_ph}/>
               </div>
               <div className="form-field">
                 <label>{t.rf_program_label}</label>
@@ -821,14 +829,14 @@ export default function Home() {
               </div>
               <div className="form-field full">
                 <label>{t.rf_text_label}</label>
-                <textarea value={rfText} onChange={e=>setRfText(e.target.value)} rows={4} placeholder="Расскажите о своём опыте..."/>
+                <textarea value={rfText} onChange={e=>setRfText(e.target.value)} rows={4} placeholder={t.rf_text_ph}/>
               </div>
               <div className="form-field">
                 <label>{t.rf_result_label}</label>
-                <input value={rfResult} onChange={e=>setRfResult(e.target.value)} placeholder="−5 кг, больше энергии..."/>
+                <input value={rfResult} onChange={e=>setRfResult(e.target.value)} placeholder={t.rf_result_ph}/>
               </div>
               <div className="form-field full">
-                <label>Фото (до 3 штук, необязательно)</label>
+                <label>{t.rf_photo_label}</label>
                 <div style={{display:'flex',gap:10,flexWrap:'wrap',marginTop:8}}>
                   {rfPhotos.map((file,i) => (
                     <div key={i} style={{position:'relative',width:80,height:80,borderRadius:12,overflow:'hidden',border:'1.5px solid var(--accent)'}}>
@@ -840,7 +848,7 @@ export default function Home() {
                   {rfPhotos.length < 3 && (
                     <label style={{width:80,height:80,borderRadius:12,border:'1.5px dashed var(--accent)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',cursor:'pointer',color:'var(--accent)',fontSize:11,gap:4}}>
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                      Добавить
+                      {t.rf_photo_add}
                       <input type="file" accept="image/*" style={{display:'none'}} onChange={e=>e.target.files[0]&&setRfPhotos(p=>[...p,e.target.files[0]])}/>
                     </label>
                   )}
@@ -900,7 +908,7 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer>
-        <div className="footer-logo">Юлия Петров</div>
+        <div className="footer-logo">{t.nav_logo}</div>
         <p>© 2025 · <a href="https://www.instagram.com/julia_petrov_nutritio/" target="_blank">@julia_petrov_nutritio</a> · {t.footer_copy}</p>
         <div className="footer-badge">
           <a href="https://northpixel.vercel.app/" target="_blank" className="badge-text">
