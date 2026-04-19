@@ -5,15 +5,13 @@ import { useState, useEffect, useRef } from 'react'
 const T = {
   ru: {
     nav_logo:'Юлия Петров', nav_for_whom:'Для кого', nav_about:'Обо мне',
-    nav_how:'Как работаем', nav_packages:'Программы', nav_reviews:'Отзывы',
+    nav_how:'Как работаю', nav_packages:'Программы', nav_reviews:'Отзывы',
     nav_faq:'Вопросы', nav_cta:'Написать',
     hero_eyebrow:'Нутрициолог · Мягкий подход · Эстония',
     hero_h1:'Питание, которое', hero_h1_em:'работает для вас',
     hero_sub:'Помогаю в выстраивании персональной системы питания для поддержки энергии, хорошего самочувствия и качества жизни — без жёстких ограничений и давления.',
     hero_cta1:'Написать в Instagram', hero_cta2:'Посмотреть программы',
     hero_stat:'клиентов вернули энергию и лёгкость',
-    m1:'Персональный план питания', m2:'Без жёстких диет', m3:'Работа с ЖКТ',
-    m4:'Снижение веса', m5:'Энергия и бодрость', m6:'Онлайн-сопровождение',
     prob_tag:'Узнаёте себя?', prob_h2:'Когда что-то идёт не так',
     prob_sub:'Если хоть один из этих пунктов про вас — вы на правильном сайте.',
     p1_h:'Постоянная усталость', p1_t:'Просыпаетесь разбитой, к обеду уже нет сил.',
@@ -30,7 +28,7 @@ const T = {
     about_p1:'Я — интегративный нутрициолог. Работаю с питанием и образом жизни как с системой, которая напрямую влияет на уровень энергии, самочувствия и общее качество жизни.',
     about_p2:'Мой профессиональный путь начался с личного запроса. В какой-то момент я столкнулась с постоянной усталостью и снижением ресурса — состоянием, когда даже после отдыха не возвращается энергия. Погружение в нутрициологию и последовательная работа с привычками питания помогли мне восстановить баланс и выйти на стабильное, хорошее самочувствие.',
     about_p3:'Сегодня я сопровождаю клиентов в выстраивании индивидуальной системы питания и образа жизни — без жёстких ограничений и универсальных решений. В основе моей работы — внимательное отношение к организму, постепенные изменения и устойчивый результат.',
-    cred1:'Диплом нутрициолога', cred2:'Международные сертификаты', cred3:'', cred4:'Опыт более 3 лет',
+    cred1:'Диплом нутрициолога', cred2:'Опыт более 3 лет',
     how_tag:'Как проходит работа', how_h2:'Без жёстких схем и универсальных решений',
     how_sub:'',
     s1_h:'Знакомство и первичный анализ', s1_t:'Вы заполняете анкету, дневник питания и делитесь своим образом жизни, самочувствием и привычками.',
@@ -38,25 +36,42 @@ const T = {
     s3_h:'Понимание и осознанность', s3_t:'Показываю, почему это работает, чтобы вы могли принимать решения с уверенностью.',
     s4_h:'Поддержка в процессе', s4_t:'Сопровождаю вас на каждом этапе, отвечаю на вопросы и помогаю закрепить результат в повседневной жизни.',
     pack_tag:'Программы', pack_h2:'Выберите свой формат работы',
-    pack_sub:'Каждая программа — персональный подход. Цены обсуждаем индивидуально.',
-    pk1_h:'Консультация', pk1_d:'Разовая встреча для конкретного плана действий.',
-    pk2_badge:'Популярный выбор', pk2_h:'Сопровождение', pk2_d:'Работаем вместе 1–3 месяца.',
-    pk3_h:'VIP', pk3_d:'Максимальное погружение для лучшего результата.',
+    pack_sub:'Каждая программа — персональный подход.',
+    pk1_h:'START', pk1_badge:'',
+    pk1_d:'Идеально, если вы хотите получить профессиональный разбор и понять, с чего начать.',
+    pk1_includes_title:'В пакет входит:',
+    pk1_includes:['Анализ вашей анкеты','Анализ дневника питания','Разовая онлайн-консультация (1–1,5 часа)','Персональные рекомендации по питанию и улучшению рациона'],
+    pk1_who_title:'Кому подходит:',
+    pk1_who:['Тем, кто только начинает путь к правильному питанию','Если есть ощущение «питаюсь неправильно, но не понимаю как исправить»','Тем, кто хочет получить чёткий план действий без сопровождения','Если нужен системный взгляд со стороны'],
+    pk1_result:'📌 Результат: вы получаете ясность, конкретные ошибки и понятный план первых шагов.',
+    pk1_price:'Стоимость: 135€',
+    pk2_badge:'Популярный выбор',
+    pk2_h:'PRO',
+    pk2_d:'Подходит, если вы хотите не только рекомендации, но и поддержку в процессе изменений.',
+    pk2_includes_title:'В пакет входит:',
+    pk2_includes:['Анализ вашей анкеты и назначение анализов','Анализ дневника питания','Нутрициологический разбор анализов','Индивидуальная стратегия питания под ваши цели и особенности организма','Индивидуальные рекомендации по нутриентной поддержке (БАДы при необходимости)','Сопровождение 1,5 месяца: онлайн-консультация каждую неделю (40 мин – 1 час, всего 4 онлайн-встречи), ответы на вопросы','Поддержка и мотивация'],
+    pk2_who_title:'Кому подходит:',
+    pk2_who:['Тем, кому важна поддержка и обратная связь','Тем, кому требуется более глубокая работа с нутрициологом'],
+    pk2_result:'📌 Результат: вы внедряете новые привычки, рекомендации и закрепляете результаты для достижения вашей цели.',
+    pk2_price:'Стоимость: 380€',
+    pk3_h:'Индивидуальный формат работы', pk3_badge:'',
+    pk3_d:'Если у вас есть запрос / желание, которые не вписываются в предложенные пакеты (состояние здоровья, ритм жизни, специфические цели и т.д.), мы можем обсудить индивидуальный формат сопровождения.',
+    pk3_sub:'Я подхожу к каждому клиенту персонально и при необходимости адаптирую программу под вашу ситуацию.',
+    pk3_cta:'📩 Напишите мне, опишите свою задачу — и я предложу оптимальное решение именно для вас.',
+    pk_not_for_title:'❗️ Кому не подойдёт работа со мной',
+    pk_not_for:['Тем, кто уже «всё знает» и не готов внедрять рекомендации','Если вы ищете «волшебную таблетку» без изменений в привычках','Тем, кто не готов к диалогу и работе над собой'],
+    pk_not_for_note:'📌 Важно: результат зависит не только от рекомендаций, но и от вашей вовлечённости в процесс.',
     pk_learn:'Узнать подробнее', pk_write:'Написать и узнать цену',
     faq_tag:'Вопросы и ответы', faq_h2:'Часто спрашивают',
     faq_sub:'Если вашего вопроса нет — пишите напрямую.',
     faq1_q:'Мне подойдёт, если я не в Эстонии?',
     faq1_a:'Да! Я работаю полностью онлайн — Zoom, Google Meet, мессенджеры.',
-    faq2_q:'Как долго длится программа?',
-    faq2_a:'Консультация — 1–1.5 часа. Сопровождение — от 1 до 3 месяцев.',
-    faq3_q:'Будет ли жёсткое меню и ограничения?',
-    faq3_a:'Нет. Мягкий подход, никаких запрещённых продуктов.',
-    faq4_q:'Нужно ли сдавать анализы перед работой?',
-    faq4_a:'Не обязательно, но помогает. Подскажу что проверить.',
-    faq5_q:'Как начать работу с вами?',
-    faq5_a:'Напишите в Instagram. Первое знакомство бесплатно.',
-    faq6_q:'Сколько стоят услуги?',
-    faq6_a:'Зависит от формата. Напишите — обсудим.',
+    faq2_q:'Нужно ли сдавать анализы перед работой?',
+    faq2_a:'Да. Наличие анализов может быть полезным инструментом для более глубокой и персонализированной работы, так как позволяет учитывать индивидуальные особенности организма.',
+    faq3_q:'Проводите ли вы диагностику по анализам?',
+    faq3_a:'Я не провожу медицинскую диагностику и не заменяю консультацию врача. Я могу учитывать результаты анализов в работе для более персонализированного подхода к питанию и образу жизни. При выявлении отклонений рекомендую обратиться к врачу.',
+    faq4_q:'Как начать работу с вами?',
+    faq4_a:'Напишите мне в Instagram.',
     rev_tag:'Реальные отзывы', rev_h2:'Что говорят клиенты',
     rev_sub:'Настоящие отзывы. Можете оставить свой — появится после проверки.',
     rf_title:'Оставьте свой отзыв', rf_sub:'Опубликуем после проверки.',
@@ -65,26 +80,24 @@ const T = {
     rf_submit:'Отправить отзыв', rf_note:'После проверки будет опубликован',
     rf_success_title:'Спасибо за отзыв!', rf_success_sub:'Появится после проверки.',
     adv_tag:'Почему со мной', adv_h2:'Подход, который работает',
-    adv1_h:'Объясняю, а не диктую', adv1_t:'Вы понимаете логику.',
-    adv2_h:'Поддержка на каждом шаге', adv2_t:'Рядом в вопросах и победах.',
-    adv3_h:'Без давления и диет', adv3_t:'В вашем темпе.',
-    adv4_h:'Результат, который остаётся', adv4_t:'Система привычек на всю жизнь.',
+    adv1_h:'Понимание вместо строгих правил', adv1_t:'Вы не просто следуете рекомендациям, а понимаете, как и почему они работают.',
+    adv2_h:'Поддержка', adv2_t:'Я рядом на всём пути — в вопросах, сомнениях и ваших достижениях.',
+    adv3_h:'Бережный подход', adv3_t:'Без жёстких ограничений и давления — с уважением к вашему ритму жизни.',
+    adv4_h:'Результат, который остаётся с вами', adv4_t:'Формируем привычки и систему питания, которые становятся частью вашей жизни надолго.',
     cta_tag:'Первый шаг', cta_h2:'Готовы начать?',
-    cta_sub:'Напишите мне — первое знакомство бесплатно.',
+    cta_sub:'Напишите мне.',
     cta_btn:'Написать в Instagram', footer_copy:'Нутрициолог, Эстония',
     no_reviews:'Одобренных отзывов пока нет.',
   },
   et: {
     nav_logo:'Julia Petrov', nav_for_whom:'Kellele', nav_about:'Minust',
-    nav_how:'Kuidas töötame', nav_packages:'Programmid', nav_reviews:'Arvustused',
+    nav_how:'Kuidas töötan', nav_packages:'Programmid', nav_reviews:'Arvustused',
     nav_faq:'Küsimused', nav_cta:'Kirjuta',
     hero_eyebrow:'Toitumisnõustaja · Pehme lähenemine · Eesti',
     hero_h1:'Toitumine, mis', hero_h1_em:'töötab teie jaoks',
     hero_sub:'Aitan luua isikliku toitumissüsteemi energia toetamiseks, heaoluks ja elukvaliteediks — ilma rangete piirangute ja surveta.',
     hero_cta1:'Kirjuta Instagramis', hero_cta2:'Vaata programme',
     hero_stat:'klienti taastasid energia ja kerguse',
-    m1:'Isiklik toitumisplaan', m2:'Ilma rangete dieetideta', m3:'Seedimisega töötamine',
-    m4:'Kaalu langetamine', m5:'Energia ja elujõud', m6:'Veebisaatmine',
     prob_tag:'Kas tunned ennast ära?', prob_h2:'Kui midagi läheb valesti',
     prob_sub:'Kui kas või üks neist punktidest on sinu kohta — oled õigel saidil.',
     p1_h:'Pidev väsimus', p1_t:'Ärkad katki, lõunaks pole jõudu.',
@@ -101,7 +114,7 @@ const T = {
     about_p1:'Olen integratiivne toitumisnõustaja. Töötan toitumise ja elustiiliga kui süsteemiga, mis mõjutab otseselt energia taset, enesetunnet ja elukvaliteeti.',
     about_p2:'Minu professionaalne tee sai alguse isiklikust vajadusest. Mingil hetkel kogesin pidevat väsimust ja ressursi langust — seisundit, kus energia ei taastu isegi pärast puhkust. Toitumisnõustamisesse süvenemine ja järjepidev töö toitumisharjumustega aitasid mul tasakaalu taastada.',
     about_p3:'Täna saadate kliente individuaalse toitumis- ja elustiilisüsteemi loomisel — ilma rangete piirangute ja universaalsete lahendusteta.',
-    cred1:'Toitumisnõustaja diplom', cred2:'Rahvusvahelised sertifikaadid', cred3:'', cred4:'Kogemus üle 3 aasta',
+    cred1:'Toitumisnõustaja diplom', cred2:'Kogemus üle 3 aasta',
     how_tag:'Kuidas töö käib', how_h2:'Ilma rangete skeemide ja universaalsete lahendusteta',
     how_sub:'',
     s1_h:'Tutvumine ja esmane analüüs', s1_t:'Täidad ankeedi, toidupäeviku ja jagad oma eluviisi, enesetunnet ja harjumusi.',
@@ -110,18 +123,39 @@ const T = {
     s4_h:'Tugi protsessis', s4_t:'Saadate sind igal etapil, vastan küsimustele ja aitan tulemust igapäevaelus kinnistada.',
     pack_tag:'Programmid', pack_h2:'Vali oma töövorm',
     pack_sub:'Iga programm on isiklik lähenemine.',
-    pk1_h:'Konsultatsioon', pk1_d:'Ühekordne kohtumine.',
-    pk2_badge:'Populaarne valik', pk2_h:'Saatmine', pk2_d:'Töötame koos 1–3 kuud.',
-    pk3_h:'VIP', pk3_d:'Maksimaalne süvenemine.',
+    pk1_h:'START', pk1_badge:'',
+    pk1_d:'Ideaalne, kui soovid saada professionaalset analüüsi ja mõista, kust alustada.',
+    pk1_includes_title:'Paketti kuulub:',
+    pk1_includes:['Sinu ankeedi analüüs','Toidupäeviku analüüs','Ühekordne veebikonsultatsioon (1–1,5 tundi)','Isiklikud toitumissoovitused'],
+    pk1_who_title:'Kellele sobib:',
+    pk1_who:['Neile, kes alles alustavad õige toitumise teed','Kui on tunne «söön valesti, aga ei tea kuidas parandada»','Neile, kes soovivad selget tegevusplaani ilma saatmiseta','Kui on vaja süsteemset väljavaadet'],
+    pk1_result:'📌 Tulemus: saad selguse, konkreetsed vead ja arusaadava esimeste sammude plaani.',
+    pk1_price:'Hind: 135€',
+    pk2_badge:'Populaarne valik',
+    pk2_h:'PRO',
+    pk2_d:'Sobib, kui soovid mitte ainult soovitusi, vaid ka tuge muutuste protsessis.',
+    pk2_includes_title:'Paketti kuulub:',
+    pk2_includes:['Sinu ankeedi analüüs ja analüüside määramine','Toidupäeviku analüüs','Analüüside toitumisnõustamislik läbivaatamine','Individuaalne toitumisstraateegia sinu eesmärkide järgi','Individuaalsed soovitused toitainete toe osas (toidulisandid vajadusel)','Saatmine 1,5 kuud: iganädalane veebikonsultatsioon (40 min – 1 tund, kokku 4 kohtumist), küsimustele vastamine','Tugi ja motivatsioon'],
+    pk2_who_title:'Kellele sobib:',
+    pk2_who:['Neile, kellele on oluline tugi ja tagasiside','Neile, kes vajavad põhjalikumat tööd toitumisnõustajaga'],
+    pk2_result:'📌 Tulemus: juurutad uued harjumused ja soovitused ning kinnistud tulemused oma eesmärgi saavutamiseks.',
+    pk2_price:'Hind: 380€',
+    pk3_h:'Individuaalne töövorm', pk3_badge:'',
+    pk3_d:'Kui sul on soov või vajadus, mis ei mahu pakutud pakettidesse (tervislik seisund, elurütm, spetsiifilised eesmärgid jne), saame arutada individuaalset saatmisformaati.',
+    pk3_sub:'Suhtun igasse klienti isiklikult ja vajaduse korral kohandan programmi sinu olukorrale.',
+    pk3_cta:'📩 Kirjuta mulle, kirjelda oma ülesannet — ja pakun just sinule optimaalse lahenduse.',
+    pk_not_for_title:'❗️ Kellele töö minuga ei sobi',
+    pk_not_for:['Neile, kes juba «teavad kõike» ja ei ole valmis soovitusi rakendama','Kui otsite «imeliseid tablette» ilma harjumuste muutmiseta','Neile, kes ei ole valmis dialoogiks ja enesearenguks'],
+    pk_not_for_note:'📌 Oluline: tulemus sõltub mitte ainult soovitustest, vaid ka teie kaasatusest protsessi.',
     pk_learn:'Lisateave', pk_write:'Kirjuta ja uuri hinda',
     faq_tag:'K&V', faq_h2:'Korduma kippuvad',
     faq_sub:'Küsi julgelt.',
     faq1_q:'Kas sobib, kui ma pole Eestis?', faq1_a:'Jah! Töötan täielikult veebis.',
-    faq2_q:'Kui kaua programm kestab?', faq2_a:'Konsultatsioon 1–1,5h. Saatmine 1–3 kuud.',
-    faq3_q:'Kas on rangeid piiranguid?', faq3_a:'Ei. Keelatud toiduained puuduvad.',
-    faq4_q:'Kas pean analüüse tegema?', faq4_a:'Pole kohustuslik.',
-    faq5_q:'Kuidas alustada?', faq5_a:'Kirjuta Instagramis. Esimene tutvumine tasuta.',
-    faq6_q:'Palju maksab?', faq6_a:'Kirjuta — arutame.',
+    faq2_q:'Kas pean analüüse tegema?',
+    faq2_a:'Jah. Analüüside olemasolu võib olla kasulik vahend sügavamaks ja isikupärasemaks tööks, kuna võimaldab arvestada organismi individuaalseid eripärasid.',
+    faq3_q:'Kas te teete analüüside põhjal diagnostikat?',
+    faq3_a:'Ma ei tee meditsiinilist diagnostikat ega asenda arsti konsultatsiooni. Saan analüüside tulemusi töös arvestada, et tagada isikupärasem lähenemine toitumisele ja eluviisile. Kõrvalekallete avastamisel soovitan pöörduda arsti poole.',
+    faq4_q:'Kuidas alustada?', faq4_a:'Kirjuta mulle Instagramis.',
     rev_tag:'Arvustused', rev_h2:'Mida kliendid ütlevad',
     rev_sub:'Päriselt inimestelt pärit arvustused.',
     rf_title:'Jäta oma arvustus', rf_sub:'Avaldatakse pärast kontrolli.',
@@ -130,25 +164,24 @@ const T = {
     rf_submit:'Saada arvustus', rf_note:'Avaldatakse pärast kontrolli',
     rf_success_title:'Tänan!', rf_success_sub:'Ilmub pärast kontrolli.',
     adv_tag:'Miks minuga', adv_h2:'Lähenemine, mis töötab',
-    adv1_h:'Selgitan, ei dikteeri', adv1_t:'Mõistad loogikat.',
-    adv2_h:'Tugi igal sammul', adv2_t:'Olen kõrval.',
-    adv3_h:'Ilma surve ja dieetideta', adv3_t:'Sinu tempos.',
-    adv4_h:'Tulemus, mis jääb', adv4_t:'Harjumuste süsteem eluks.',
+    adv1_h:'Mõistmine rangete reeglite asemel', adv1_t:'Sa ei järgi lihtsalt soovitusi, vaid mõistad, kuidas ja miks need töötavad.',
+    adv2_h:'Tugi', adv2_t:'Olen kõrval kogu teel — küsimustes, kahtlustes ja sinu saavutustes.',
+    adv3_h:'Hooliv lähenemine', adv3_t:'Ilma rangete piirangute ja surveta — austusega sinu elurütmi vastu.',
+    adv4_h:'Tulemus, mis jääb sinuga', adv4_t:'Kujundame harjumused ja toitumissüsteemi, mis saavad pikaks ajaks sinu elu osaks.',
     cta_tag:'Esimene samm', cta_h2:'Valmis alustama?',
-    cta_sub:'Kirjuta mulle — esimene tutvumine tasuta.',
+    cta_sub:'Kirjuta mulle.',
     cta_btn:'Kirjuta Instagramis', footer_copy:'Toitumisnõustaja, Eesti',
     no_reviews:'Kinnitatud arvustusi pole veel.',
   },
   en: {
     nav_logo:'Julia Petrov', nav_for_whom:"Who it's for", nav_about:'About',
-    nav_how:'How we work', nav_packages:'Programs', nav_reviews:'Reviews',
+    nav_how:'How I work', nav_packages:'Programs', nav_reviews:'Reviews',
     nav_faq:'FAQ', nav_cta:'Contact',
     hero_eyebrow:'Nutritionist · Gentle approach · Estonia',
     hero_h1:'Nutrition that', hero_h1_em:'works for you',
     hero_sub:"I help build a personal nutrition system to support energy, wellbeing and quality of life — without rigid restrictions or pressure.",
     hero_cta1:'Write on Instagram', hero_cta2:'View programs',
     hero_stat:'clients restored energy and lightness',
-    m1:'Personal nutrition plan', m2:'No rigid diets', m3:'Gut health', m4:'Weight management', m5:'Energy', m6:'Online support',
     prob_tag:'Do you recognise this?', prob_h2:'When something goes wrong',
     prob_sub:"If even one point resonates — you're in the right place.",
     p1_h:'Constant fatigue', p1_t:'You wake up exhausted.',
@@ -165,7 +198,7 @@ const T = {
     about_p1:"I'm an integrative nutritionist. I work with nutrition and lifestyle as a system that directly affects energy levels, wellbeing and overall quality of life.",
     about_p2:"My professional journey began with a personal need. At some point I faced constant fatigue and a drop in resources — a state where energy doesn't return even after rest. Immersing myself in nutritiology and consistently working on eating habits helped me restore balance and reach stable, good health.",
     about_p3:"Today I support clients in building an individual nutrition and lifestyle system — without rigid restrictions or universal solutions. At the core of my work is mindful attention to the body, gradual changes and lasting results.",
-    cred1:'Nutritionist diploma', cred2:'International certificates', cred3:'', cred4:'3+ years experience',
+    cred1:'Nutritionist diploma', cred2:'3+ years experience',
     how_tag:'How it works', how_h2:'No rigid schemes or universal solutions',
     how_sub:'',
     s1_h:'Introduction & initial analysis', s1_t:'You fill in a questionnaire, food diary and share your lifestyle, wellbeing and habits.',
@@ -174,18 +207,39 @@ const T = {
     s4_h:'Support throughout', s4_t:"I accompany you at every stage, answer questions and help you embed results into daily life.",
     pack_tag:'Programs', pack_h2:'Choose your format',
     pack_sub:'Personal approach, not a template.',
-    pk1_h:'Consultation', pk1_d:'One-time session with a concrete plan.',
-    pk2_badge:'Most popular', pk2_h:'Mentorship', pk2_d:'1–3 months together.',
-    pk3_h:'VIP', pk3_d:'Maximum depth for the best results.',
+    pk1_h:'START', pk1_badge:'',
+    pk1_d:'Ideal if you want a professional breakdown and to understand where to begin.',
+    pk1_includes_title:'What's included:',
+    pk1_includes:['Analysis of your questionnaire','Analysis of your food diary','One-time online consultation (1–1.5 hours)','Personal nutrition recommendations'],
+    pk1_who_title:'Who it's for:',
+    pk1_who:['Those just starting their healthy eating journey','If you feel "I eat wrong but don\'t know how to fix it"','Those who want a clear action plan without ongoing support','If you need a systematic outside perspective'],
+    pk1_result:'📌 Result: you gain clarity, identify specific mistakes and get an understandable first-steps plan.',
+    pk1_price:'Price: €135',
+    pk2_badge:'Most popular',
+    pk2_h:'PRO',
+    pk2_d:'Ideal if you want not only recommendations but also support throughout the process of change.',
+    pk2_includes_title:'What's included:',
+    pk2_includes:['Questionnaire analysis and lab test referrals','Food diary analysis','Nutritional review of lab results','Individual nutrition strategy tailored to your goals','Individual micronutrient support recommendations (supplements if needed)','1.5-month support: weekly online consultation (40 min–1 hour, 4 sessions total), Q&A','Support and motivation'],
+    pk2_who_title:'Who it's for:',
+    pk2_who:['Those for whom support and feedback matter','Those who need deeper work with a nutritionist'],
+    pk2_result:'📌 Result: you implement new habits and recommendations and consolidate results towards your goal.',
+    pk2_price:'Price: €380',
+    pk3_h:'Individual format', pk3_badge:'',
+    pk3_d:'If your request doesn\'t fit the packages above (health condition, lifestyle, specific goals etc.), we can discuss an individual support format.',
+    pk3_sub:'I approach every client personally and adapt the programme to your situation if needed.',
+    pk3_cta:'📩 Write to me, describe your goal — and I\'ll suggest the best solution for you.',
+    pk_not_for_title:"❗️ Who I'm not the right fit for",
+    pk_not_for:['Those who "already know everything" and aren\'t ready to implement recommendations','If you\'re looking for a "magic pill" without changing habits','Those not ready for dialogue and working on themselves'],
+    pk_not_for_note:'📌 Important: results depend not only on recommendations but also on your involvement in the process.',
     pk_learn:'Learn more', pk_write:'Write and ask about price',
     faq_tag:'FAQ', faq_h2:'Frequently asked',
     faq_sub:'More questions? Write directly.',
     faq1_q:"Does it work if I'm not in Estonia?", faq1_a:'Yes! Fully online.',
-    faq2_q:'How long does the program last?', faq2_a:'Consultation 1–1.5h. Mentorship 1–3 months.',
-    faq3_q:'Will there be strict restrictions?', faq3_a:'No. Gentle approach.',
-    faq4_q:'Do I need tests first?', faq4_a:"Not required.",
-    faq5_q:'How do I start?', faq5_a:'Write on Instagram. First meeting is free.',
-    faq6_q:'How much does it cost?', faq6_a:"Write to me — we'll discuss.",
+    faq2_q:'Do I need lab tests first?',
+    faq2_a:'Yes. Having test results can be a valuable tool for deeper and more personalised work, as it allows us to account for your body\'s individual characteristics.',
+    faq3_q:'Do you diagnose based on lab results?',
+    faq3_a:'I do not perform medical diagnosis and do not replace a doctor\'s consultation. I can take lab results into account for a more personalised approach to nutrition and lifestyle. If deviations are found, I recommend consulting a doctor.',
+    faq4_q:'How do I start?', faq4_a:'Write to me on Instagram.',
     rev_tag:'Real reviews', rev_h2:'What clients say',
     rev_sub:'Genuine reviews. Leave yours — appears after moderation.',
     rf_title:'Leave your review', rf_sub:'Published after moderation.',
@@ -194,12 +248,12 @@ const T = {
     rf_submit:'Submit review', rf_note:'Will be published after moderation',
     rf_success_title:'Thank you!', rf_success_sub:'Appears after moderation.',
     adv_tag:'Why me', adv_h2:'An approach that truly works',
-    adv1_h:'I explain, not dictate', adv1_t:'You understand the logic.',
-    adv2_h:'Support at every step', adv2_t:"I'm here for you.",
-    adv3_h:'No pressure or diets', adv3_t:'At your pace.',
-    adv4_h:'Results that last', adv4_t:'Habits for life.',
+    adv1_h:'Understanding over strict rules', adv1_t:"You don't just follow recommendations — you understand how and why they work.",
+    adv2_h:'Support', adv2_t:"I'm here for you throughout — in questions, doubts and your achievements.",
+    adv3_h:'A caring approach', adv3_t:'No rigid restrictions or pressure — with respect for your life rhythm.',
+    adv4_h:'Results that stay with you', adv4_t:'We build habits and a nutrition system that become a lasting part of your life.',
     cta_tag:'First step', cta_h2:'Ready to start?',
-    cta_sub:'Write to me — first meeting is free.',
+    cta_sub:'Write to me.',
     cta_btn:'Write on Instagram', footer_copy:'Nutritionist, Estonia',
     no_reviews:'No approved reviews yet.',
   }
@@ -221,7 +275,7 @@ export default function Home() {
   const [rating, setRating] = useState(0)
   const [rfName, setRfName] = useState('')
   const [rfText, setRfText] = useState('')
-  const [rfProgram, setRfProgram] = useState('Консультация')
+  const [rfProgram, setRfProgram] = useState('START')
   const [rfResult, setRfResult] = useState('')
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const [submitting, setSubmitting] = useState(false)
@@ -235,7 +289,7 @@ export default function Home() {
   const [adminReviews, setAdminReviews] = useState([])
   const [adminLoading, setAdminLoading] = useState(false)
 
-  const ADMIN_SECRET = process.env.NEXT_PUBLIC_ADMIN_SECRET || 'julia2025'
+  const ADMIN_SECRET = process.env.NEXT_PUBLIC_ADMIN_SECRET || 'Nut1306'
 
   // ─── INIT ───
   useEffect(() => {
@@ -380,7 +434,7 @@ export default function Home() {
   }
 
   function adminLogin() {
-    if (adminPass === 'julia2025') {
+    if (adminPass === 'Nut1306') {
       setAdminLoggedIn(true)
       fetchAdminReviews()
     } else {
@@ -469,15 +523,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* MARQUEE */}
-      <div className="marquee-section">
-        <div className="marquee-track">
-          {[t.m1,t.m2,t.m3,t.m4,t.m5,t.m6,t.m1,t.m2,t.m3,t.m4,t.m5,t.m6].map((m,i) => (
-            <span key={i} className="marquee-item">{m}<span className="marquee-dot"/></span>
-          ))}
-        </div>
-      </div>
-
       {/* PROBLEMS */}
       <section id="problems" className="section">
         <div className="container">
@@ -542,7 +587,7 @@ export default function Home() {
               <p>{t.about_p2}</p>
               <p>{t.about_p3}</p>
               <div className="creds">
-                {[t.cred1,t.cred2,t.cred3,t.cred4].filter(c => c).map((c,i) => (
+                {[t.cred1,t.cred2].filter(c => c).map((c,i) => (
                   <div key={i} className="cred">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                     <span>{c}</span>
@@ -597,25 +642,70 @@ export default function Home() {
             <p>{t.pack_sub}</p>
           </div>
           <div className="pack-grid stagger">
+
+            {/* START */}
             <div className="pack-card">
               <div className="pack-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
               <h3>{t.pk1_h}</h3>
               <p className="pack-desc">{t.pk1_d}</p>
-              <a href="https://www.instagram.com/julia_petrov_nutritio/" target="_blank" className="pack-btn pack-btn-ghost">{t.pk_learn}</a>
+              <div style={{marginBottom:16}}>
+                <div style={{fontSize:13,fontWeight:600,color:'var(--c7)',marginBottom:8}}>{t.pk1_includes_title}</div>
+                <ul style={{paddingLeft:18,display:'flex',flexDirection:'column',gap:4}}>
+                  {t.pk1_includes.map((item,i)=><li key={i} style={{fontSize:13,color:'var(--muted)'}}>{item}</li>)}
+                </ul>
+              </div>
+              <div style={{marginBottom:16}}>
+                <div style={{fontSize:13,fontWeight:600,color:'var(--c7)',marginBottom:8}}>{t.pk1_who_title}</div>
+                <ul style={{paddingLeft:18,display:'flex',flexDirection:'column',gap:4}}>
+                  {t.pk1_who.map((item,i)=><li key={i} style={{fontSize:13,color:'var(--muted)'}}>{item}</li>)}
+                </ul>
+              </div>
+              <p style={{fontSize:13,color:'var(--c6)',marginBottom:12}}>{t.pk1_result}</p>
+              <p style={{fontSize:15,fontWeight:600,color:'var(--c7)',marginBottom:20}}>{t.pk1_price}</p>
+              <a href="https://www.instagram.com/julia_petrov_nutritio/" target="_blank" className="pack-btn pack-btn-ghost">{t.pk_write}</a>
             </div>
+
+            {/* PRO */}
             <div className="pack-card feat">
               <div className="pack-badge">{t.pk2_badge}</div>
               <div className="pack-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
               <h3>{t.pk2_h}</h3>
               <p className="pack-desc">{t.pk2_d}</p>
+              <div style={{marginBottom:16}}>
+                <div style={{fontSize:13,fontWeight:600,color:'var(--c7)',marginBottom:8}}>{t.pk2_includes_title}</div>
+                <ul style={{paddingLeft:18,display:'flex',flexDirection:'column',gap:4}}>
+                  {t.pk2_includes.map((item,i)=><li key={i} style={{fontSize:13,color:'var(--muted)'}}>{item}</li>)}
+                </ul>
+              </div>
+              <div style={{marginBottom:16}}>
+                <div style={{fontSize:13,fontWeight:600,color:'var(--c7)',marginBottom:8}}>{t.pk2_who_title}</div>
+                <ul style={{paddingLeft:18,display:'flex',flexDirection:'column',gap:4}}>
+                  {t.pk2_who.map((item,i)=><li key={i} style={{fontSize:13,color:'var(--muted)'}}>{item}</li>)}
+                </ul>
+              </div>
+              <p style={{fontSize:13,color:'var(--c6)',marginBottom:12}}>{t.pk2_result}</p>
+              <p style={{fontSize:15,fontWeight:600,color:'var(--c7)',marginBottom:20}}>{t.pk2_price}</p>
               <a href="https://www.instagram.com/julia_petrov_nutritio/" target="_blank" className="pack-btn pack-btn-solid">{t.pk_write}</a>
             </div>
-            <div className="pack-card">
+
+            {/* INDIVIDUAL */}
+            <div className="pack-card" style={{display:'flex',flexDirection:'column',gap:0}}>
               <div className="pack-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
               <h3>{t.pk3_h}</h3>
               <p className="pack-desc">{t.pk3_d}</p>
-              <a href="https://www.instagram.com/julia_petrov_nutritio/" target="_blank" className="pack-btn pack-btn-ghost">{t.pk_learn}</a>
+              <p style={{fontSize:13,color:'var(--muted)',marginBottom:16,lineHeight:1.7}}>{t.pk3_sub}</p>
+              <p style={{fontSize:13,color:'var(--c6)',marginBottom:20,lineHeight:1.7}}>{t.pk3_cta}</p>
+              <a href="https://www.instagram.com/julia_petrov_nutritio/" target="_blank" className="pack-btn pack-btn-ghost" style={{marginTop:'auto'}}>{t.pk_write}</a>
             </div>
+          </div>
+
+          {/* NOT FOR WHOM */}
+          <div className="reveal" style={{marginTop:56,background:'var(--white)',borderRadius:'var(--r)',padding:'36px 40px',border:'1.5px solid var(--c3)'}}>
+            <div style={{fontSize:18,fontWeight:600,color:'var(--c7)',marginBottom:16,fontFamily:"var(--ff-sans)"}}>{t.pk_not_for_title}</div>
+            <ul style={{paddingLeft:20,display:'flex',flexDirection:'column',gap:8,marginBottom:20}}>
+              {t.pk_not_for.map((item,i)=><li key={i} style={{fontSize:15,color:'var(--muted)'}}>{item}</li>)}
+            </ul>
+            <p style={{fontSize:14,color:'var(--c6)',fontWeight:500}}>{t.pk_not_for_note}</p>
           </div>
         </div>
       </section>
@@ -631,7 +721,7 @@ export default function Home() {
               <p>{t.faq_sub}</p>
             </div>
             <div className="faq-list reveal-right">
-              {[[t.faq1_q,t.faq1_a],[t.faq2_q,t.faq2_a],[t.faq3_q,t.faq3_a],[t.faq4_q,t.faq4_a],[t.faq5_q,t.faq5_a],[t.faq6_q,t.faq6_a]].map(([q,a],i) => (
+              {[[t.faq1_q,t.faq1_a],[t.faq2_q,t.faq2_a],[t.faq3_q,t.faq3_a],[t.faq4_q,t.faq4_a]].map(([q,a],i) => (
                 <div key={i} className={`faq-item${openFaq === i ? ' open' : ''}`}>
                   <div className="faq-q" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
                     <span>{q}</span>
